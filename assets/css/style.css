@@ -1,0 +1,36 @@
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    margin: 0 auto;
+}
+.animal{
+    margin: 10px;
+    width: 125px;
+    overflow: hidden;
+    background-color: teal;
+    color: #fff;
+    border: 3px black solid;
+}
+.animal:first-letter{
+    text-transform: capitalize;
+}
+.animal:hover{
+    border: 3px lightgray solid;
+}
+header{
+    border-bottom: 3px teal solid;
+    margin: 20px 0;
+    padding-bottom: 20px;
+}
+#searchArea{
+    border: 3px lightgray solid;
+    padding: 20px;
+}
+#animalInput{
+    margin-top: 10px;
+}
