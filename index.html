@@ -16,17 +16,25 @@
 
 <body>
     <header>
-        <div class="container" id="buttonArea"></div>
-        
+        <h1> GifTastic Gallery </h1>
+        <div class="container d-flex flex-wrap justify-content-center" id="buttonArea"></div>
+
     </header>
-    <div class="row container">
-        <div class="col-md-9" id="gifArea"></div>
-        <form class="col-md-3" id="searchArea">
-            <label id="labelHeader"> Add an Animal! </label>
-            <input type="text" id="userInput">
-            <input id="animalInput" type="submit" value="Submit">
-        </form>
+    <div class="container" id="content">
+        <div class="col-md-9 d-flex flex-wrap" id="gifArea"></div>
+        <div class="col-md-3">
+            <form class="d-flex flex-column" id="searchArea">
+                <label id="labelHeader"> Add an Animal! </label>
+                <input type="text" id="userInput">
+                <input id="animalInput" type="submit" value="Submit">
+            </form>
+            <button id="getMoreGifs"> Get More Gifs</button>
+        </div>
+
     </div>
+
+
+
 
 </body>
 

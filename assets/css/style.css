@@ -11,7 +11,6 @@ html{
 .animal{
     margin: 10px;
     width: 125px;
-    overflow: hidden;
     background-color: teal;
     color: #fff;
     border: 3px black solid;
@@ -27,10 +26,53 @@ header{
     margin: 20px 0;
     padding-bottom: 20px;
 }
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#content{
+    display: flex;
+    flex-flow: row;
+}
 #searchArea{
+    height: 150px;
     border: 3px lightgray solid;
     padding: 20px;
+    margin-bottom: 20px;
 }
 #animalInput{
     margin-top: 10px;
+    width: 50%
+}
+
+#userInput{
+    max-width: 100%; 
+}
+
+.gifArea{
+    justify-content: space-around;
+}
+.gifBox{
+    max-width: 325px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    border: 2px black solid;
+    text-align: center;
+}
+.gifImage{
+    width: 300px;
+    max-height: 300px;
+    margin: 10px;
+    border: 2px black solid;
+}
+
+@media screen and (max-width: 720px){
+    #content{
+        flex-flow: column-reverse;
+    }
+    #gifArea{
+        justify-content: center;
+    }
 }
