@@ -1,6 +1,7 @@
 $(function () {
     var animals = ["dog", "cat", "frog", "horse", "cow", "bird", "skunk", "fish", "turtle", "molerat", "gopher", "hamster"]
-
+    var currentTopic = ""
+    var numberOfImages = 10
     function renderButton() {
         animals.forEach(function makeButton(animal) {
             name = animal;
@@ -12,9 +13,15 @@ $(function () {
         })
     }
 
+    //this is ugly, clean this up later!
+    $("#getMoreGifs").on("click", function add() {
+        numberOfImages += numberOfImages;
+        console.log(numberOfImages)
+    })
+    $("#getMoreGifs").on("click", getGifs)
+    //
     function getGifs() {
         var animal = $(this).attr("data-name")
-        var numberOfImages = 10
 
         var key = "A6kZfOeAwflSh4Truw4K2V9NVzhxJIfw"
         var queryUrl = "http://api.giphy.com/v1/gifs/search?q="
@@ -28,7 +35,6 @@ $(function () {
             method: "GET"
         }).then(function (response) {
             $("#gifArea").html("")
-            console.log(response)
             response.data.forEach(function (gif) {
                 var still = gif.images.fixed_height_still.url
                 var giphy = gif.images.fixed_height.url
@@ -36,7 +42,6 @@ $(function () {
                 var title = gif.title
                 title = title.replace("GIF", "")
                 rating = rating.toUpperCase()
-                console.log(rating)
                 var $gifBox = $("<div class='gifBox'>")
                 $gifBox.append("<img class='gifImage' src='" + still + "' "
                     + " data-still='" + still + "' "
@@ -48,14 +53,14 @@ $(function () {
             })
 
         })
+        $("#getMoreGifs").css("display", "block")
+            .attr("data-name", animal)
     }
 
     $(document).on('click', ".gifImage", function controlGif() {
         var still = $(this).attr("data-still")
         var animate = $(this).attr("data-animate")
         var state = $(this).attr("data-state")
-        var src = $(this).attr("src")
-        console.log(state)
         if (state === "still") {
             $(this).attr('src', animate)
                 .attr("data-state", "animate")
