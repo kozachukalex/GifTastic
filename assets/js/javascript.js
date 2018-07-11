@@ -13,13 +13,6 @@ $(function () {
         })
     }
 
-    //this is ugly, clean this up later!
-    $("#getMoreGifs").on("click", function add() {
-        numberOfImages += numberOfImages;
-        console.log(numberOfImages)
-    })
-    $("#getMoreGifs").on("click", getGifs)
-    //
     function getGifs() {
         var animal = $(this).attr("data-name")
 
@@ -53,8 +46,11 @@ $(function () {
             })
 
         })
-        $("#getMoreGifs").css("display", "block")
-            .attr("data-name", animal)
+        $("#getButtonHere").html("") //preventing multiple getButtons from appearing
+        var getButton = $("<button>")
+        getButton.attr("data-name", animal) //allows the api to call more gifs based on current topic. Avoids issue of (this) of getGifs()
+            .html("Get More Gifs")
+        $("#getButtonHere").append(getButton)
     }
 
     $(document).on('click', ".gifImage", function controlGif() {
@@ -74,6 +70,12 @@ $(function () {
         }
     })
 
+    $(document).on("click", "#getMoreGifs", function add() {
+        numberOfImages += numberOfImages;
+        console.log(numberOfImages)
+    })
+
+    $(document).on("click", "#getMoreGifs", getGifs)
 
     $("#animalInput").on("click", function addAnimal() {
         event.preventDefault();
