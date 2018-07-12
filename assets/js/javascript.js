@@ -1,24 +1,23 @@
 $(function () {
-    var animals = ["dog", "cat", "frog", "horse", "cow", "bird", "skunk", "fish", "turtle", "molerat", "gopher", "hamster"]
+    var topics = ["dog", "ocean", "Futurama", "MTV", "Movie", "hockey", "food", "beer", "bulldog", "car", "flowers", "books"]
     var currentTopic = ""
     var numberOfImages = 10
     function renderButton() {
-        animals.forEach(function makeButton(animal) {
-            name = animal;
+        topics.forEach(function makeButton(topic) {
             var $button = $("<button>")
-                .addClass("animal")
-                .attr("data-name", name)
-                .text(name);
+                .addClass("topic")
+                .attr("data-name", topic)
+                .text(topic);
             $("#buttonArea").append($button)
         })
     }
 
     function getGifs() {
-        var animal = $(this).attr("data-name")
+        var topic = $(this).attr("data-name")
 
         var key = "A6kZfOeAwflSh4Truw4K2V9NVzhxJIfw"
         var queryUrl = "http://api.giphy.com/v1/gifs/search?q="
-            + animal
+            + topic
             + "&api_key="
             + key
             + "&limit="
@@ -48,7 +47,7 @@ $(function () {
         })
         $("#getButtonHere").html("") //preventing multiple getButtons from appearing
         var getButton = $("<button>")
-        getButton.attr("data-name", animal) //allows the api to call more gifs based on current topic. Avoids issue of (this) of getGifs()
+        getButton.attr("data-name", userTopic) //allows the api to call more gifs based on current topic. Avoids issue of (this) of getGifs()
             .html("Get More Gifs")
         $("#getButtonHere").append(getButton)
     }
@@ -77,20 +76,20 @@ $(function () {
 
     $(document).on("click", "#getMoreGifs", getGifs)
 
-    $("#animalInput").on("click", function addAnimal() {
+    $("#topicInput").on("click", function addTopic() {
         event.preventDefault();
-        var animal = $("#userInput").val()
-        if (animal === "") {
+        var userTopic = $("#userInput").val()
+        if (userTopic === "") {
             //prevents adding empty buttons
         } else {
-            animals.push(animal)
+            topics.push(userTopic)
             $("#buttonArea").html("")
             renderButton();
             $("#userInput").val("")
         }
     })
 
-    $(document).on("click", ".animal", getGifs)
+    $(document).on("click", ".topic", getGifs)
 
     renderButton();
 
