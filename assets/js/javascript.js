@@ -16,7 +16,7 @@ $(function () {
         var topic = $(this).attr("data-name")
 
         var key = "A6kZfOeAwflSh4Truw4K2V9NVzhxJIfw"
-        var queryUrl = "http://api.giphy.com/v1/gifs/search?q="
+        var queryUrl = "https://api.giphy.com/v1/gifs/search?q="
             + topic
             + "&api_key="
             + key
