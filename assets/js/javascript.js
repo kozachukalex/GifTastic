@@ -47,7 +47,7 @@ $(function () {
         })
         $("#getButtonHere").html("") //preventing multiple getButtons from appearing
         var getButton = $("<button>")
-        getButton.attr("data-name", userTopic) //allows the api to call more gifs based on current topic. Avoids issue of (this) of getGifs()
+        getButton.attr("data-name", topic) //allows the api to call more gifs based on current topic. Avoids issue of (this) of getGifs()
             .html("Get More Gifs")
         $("#getButtonHere").append(getButton)
     }
